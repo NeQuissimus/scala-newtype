@@ -25,5 +25,12 @@ trait NewTypeCompatMacros {
     * @return
     */
   def opsClsParent: Symbol = typeOf[AnyRef].typeSymbol
+
+  /** scala 2.10 has problems with NewTypeArray, so we'll only generate it for 2.11+ */
+  def generateExtra(
+    clsDef: ClassDef, modDef: ModuleDef, valDef: ValDef,
+    tparamsNoVar: List[TypeDef], tparamNames: List[TypeName], tparamsWild: List[TypeDef],
+    subtype: Boolean
+  ): List[Tree] = Nil
 }
 
